@@ -1,0 +1,15 @@
+.project-body-error-message {
+  color: darkred;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 0.2rem;
+  text-align: center f;
+}
+
+.project-body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}

@@ -20,29 +20,21 @@ export function ProjectBody({ id }: Pick<IProjectData, "id">) {
   }, [dispatch, id]);
 
   return error ? (
-    <div
-      style={{
-        color: "darkRed",
-        fontSize: "0.8rem",
-        fontWeight: "bold",
-        marginTop: " 0.2rem",
-        textAlign: "center",
-      }}
-    >
-      {error}
-    </div>
+    <div className="project-body-error-message">{error}</div>
   ) : (
     <div>
       {pending ? (
         <div>Loading...</div>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        <div className="project-body-container">
+          <div
+            style={{
+              padding: "0 20px",
+            }}
+          >
+            <div>Name: {data && data.project.name}</div>
+            <div> ID: {data && data.id}</div>
+          </div>
           {data && data.project.items && data.project.items.length > 0 ? (
             <svg width={widthWindow} height={heighWindow}>
               {data.project.items.map((item) => {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
 import { ProjectBody } from "./component/ProjectBody/ProjectBody";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,9 +6,11 @@ import { RootState } from "./store/reducers/rootReducer";
 import { fetchInitRequest } from "./store/actions/postsActions/postsActions";
 import { fetchProductRequest } from "./store/actions/productActions/productActions";
 import { validateId } from "./component/helpers/validateId";
+// import { experimental_useFormStatus as useFormStatus } from "react-dom";
 
 function App() {
   const dispatch = useDispatch();
+
   const { pending, data, error } = useSelector(
     (state: RootState) => state.data
   );
@@ -48,30 +50,26 @@ function App() {
         <div>Loading...</div>
       ) : (
         <main>
-          <>
-            <div className="top-container">
-              {data && <span>Name: {data.name}</span>}
-              {data && <span>ID: {data.id}</span>}
-              <div className="top-container-inner">
-                <form onSubmit={handleSubmit}>
-                  <label>Project ID: </label>
-                  <input
-                    type="text"
-                    placeholder="Enter project ID"
-                    className="input-field"
-                    style={{
-                      width: "200px",
-                      height: "30px",
-                    }}
-                    onInput={handleInputChange}
-                  />
-                  <button type="submit" disabled={!inputIsValid}>
-                    Fetch
-                  </button>
-                </form>
-              </div>
+          <div className="top-container">
+            <div className="top-container-inner">
+              <form onSubmit={handleSubmit}>
+                <label>Project ID: </label>
+                <input
+                  type="text"
+                  placeholder="Enter project ID"
+                  className="input-field"
+                  style={{
+                    width: "200px",
+                    height: "30px",
+                  }}
+                  onInput={handleInputChange}
+                />
+                <button type="submit" disabled={!inputIsValid}>
+                  Fetch
+                </button>
+              </form>
             </div>
-          </>
+          </div>
 
           {data ? <ProjectBody id={data.id} /> : "no data"}
         </main>
