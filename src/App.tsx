@@ -13,8 +13,6 @@ function App() {
     (state: RootState) => state.data
   );
 
-  console.log("error", error);
-
   useEffect(() => {
     dispatch(fetchInitRequest());
   }, []);

@@ -44,7 +44,7 @@ export function ProjectBody({ id }: Pick<IProjectData, "id">) {
           }}
         >
           {data && data.project.items && data.project.items.length > 0 ? (
-            <svg width={data.project.width} height={data.project.height}>
+            <svg width={widthWindow} height={heighWindow}>
               {data.project.items.map((item) => {
                 if (
                   !item.x ||

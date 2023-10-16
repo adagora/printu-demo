@@ -37,7 +37,6 @@ function* fetchProductDataSaga(action: FetchProductDataSagaProps) {
       })
     );
   } catch (error) {
-    console.log("triggered");
     yield put(
       fetchProductFailure({
         error: (error as any).message,
