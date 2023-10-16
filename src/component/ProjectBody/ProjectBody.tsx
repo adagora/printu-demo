@@ -20,7 +20,17 @@ export function ProjectBody({ id }: Pick<IProjectData, "id">) {
   }, [dispatch, id]);
 
   return error ? (
-    <div className="Something went wrong">{error}</div>
+    <div
+      style={{
+        color: "darkRed",
+        fontSize: "0.8rem",
+        fontWeight: "bold",
+        marginTop: " 0.2rem",
+        textAlign: "center",
+      }}
+    >
+      {error}
+    </div>
   ) : (
     <div>
       {pending ? (
@@ -36,6 +46,22 @@ export function ProjectBody({ id }: Pick<IProjectData, "id">) {
           {data && data.project.items && data.project.items.length > 0 ? (
             <svg width={data.project.width} height={data.project.height}>
               {data.project.items.map((item) => {
+                if (
+                  !item.x ||
+                  !item.y ||
+                  !item.width ||
+                  !item.height ||
+                  !item.rotation ||
+                  !item.color ||
+                  isNaN(item.rotation) ||
+                  isNaN(item.x) ||
+                  isNaN(item.y) ||
+                  isNaN(item.width) ||
+                  isNaN(item.height)
+                ) {
+                  console.error("Error: missing data from server");
+                  return null;
+                }
                 const centerPoint = {
                   x: item.x,
                   y: item.y,

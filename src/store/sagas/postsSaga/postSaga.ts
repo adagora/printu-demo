@@ -15,7 +15,6 @@ const getInitData = async (): Promise<IInit> => {
 function* fetchInitDataSaga() {
   try {
     const response: IInit = yield call(getInitData);
-    console.log({ response });
     yield put(
       fetchInitSuccess({
         data: response,
@@ -31,8 +30,6 @@ function* fetchInitDataSaga() {
   }
 }
 
-function* initDataSaga() {
+export default function* initDataSaga() {
   yield all([takeLatest(initFetchTypes.FETCH_INIT_REQUEST, fetchInitDataSaga)]);
 }
-
-export default initDataSaga;
