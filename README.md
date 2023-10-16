@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Printu demo
+application that renders data downloaded from the server. The server returns data describing an abstract `canvas' on which randomly placed multi-colored rectangles are placed, and bounding  box around them.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Requirements
+1. Fetch project information from the `/init` endpoint if the user does not provide a project ID.
+2. Retrieve the project description from the `/project/{id}` endpoint using the project's ID.
+3. Render a visual representation of the fetched project. You can draw either SVG or HTML - your choice. Each project element is described by its position, dimensions, and rotation. (Note: the object's position is always defined relative to its center, and dimensions `width`/`height` are given in the local, unrotated coordinate system).
+4. The application should handle different types of elements. The element type is determined by the `type` field and can have values 'rectangle' or 'ellipse.' However, the solution should be prepared to add new types.
+5. Calculate and draw a minimal bounding box for each element on the scene (without using the DOM API).
+6. For each drawn element, mark the center point and provide information about the element's rotation.
+7. Automatically scale the project to always be fully visible, even when the browser window size changes.
+8. Allow the user to render any project by specifying its ID (in this scenario, the application should skip step 1).
+9. Implementation should include proper typing and error handling.
+10. The application should correctly handle API errors.
+11. Propose (without the need for implementation) suggestions for feedback to the API author and what tests should be written for this application.
 
-## Available Scripts
+## Features
+- bounding box
 
-In the project directory, you can run:
+### Installation
 
-### `npm start`
+```bash
+git clone ..
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Technologies
+- Typescript
+- React
+- redux-saga
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Known Issue Projects
+```bash
+ID cklzhx7e80001py9kcql231z3-4748779261984095 causes a server 500 error.
+ID cklziyda30000m19k92zfao28-9430719080200028 causes a server 404 error.
+ID cklzjw3mn0001cq9k3mvy3fvf-7941218198815694 returns incorrect data.
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Best Solution
+[example](https://recruitment01.vercel.app/example)
